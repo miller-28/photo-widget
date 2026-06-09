@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  color-scheme: dark;
+  --app-font: "Segoe UI Variable", "Segoe UI", Arial, Helvetica, sans-serif;
+  --text-primary: #f6f7fb;
+  --text-secondary: rgba(246, 247, 251, 0.72);
+  --text-muted: rgba(246, 247, 251, 0.54);
+  --surface: rgba(28, 30, 36, 0.78);
+  --surface-strong: rgba(35, 38, 46, 0.88);
+  --surface-hover: rgba(255, 255, 255, 0.1);
+  --stroke: rgba(255, 255, 255, 0.14);
+  --stroke-soft: rgba(255, 255, 255, 0.08);
+  --accent: #60cdff;
+  --accent-strong: #4cc2ff;
+  --accent-text: #071923;
+  --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.34);
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: transparent;
+  color: var(--text-primary);
+  font-family: var(--app-font);
+  font-size: 14px;
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+}
+
+.full-bleed {
+  width: 100%;
+  height: 100%;
+}
+

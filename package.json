@@ -1,0 +1,30 @@
+{
+  "name": "luma-frame",
+  "version": "0.1.0",
+  "description": "A floating desktop photo frame for local folders.",
+  "scripts": {
+    "start": "vite --host 127.0.0.1 --port 1420",
+    "dev": "concurrently \"npm:start\" \"npm:run start-app\"",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 1420",
+    "tauri": "tauri",
+    "start-app": "tauri dev"
+  },
+  "private": true,
+  "dependencies": {
+    "@tauri-apps/api": "^2.11.0",
+    "@tauri-apps/plugin-fs": "^2.4.2",
+    "@tauri-apps/plugin-opener": "^2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.5.2",
+    "concurrently": "^8.2.0",
+    "typescript": "~5.8.3",
+    "vite": "^6.3.5"
+  }
+}
