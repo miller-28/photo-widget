@@ -25,7 +25,6 @@ export function PhotoViewer({ refreshToken, onOpenSettings }: PhotoViewerProps) 
   const [images, setImages] = useState<string[]>([]);
   const [imageSources, setImageSources] = useState<Record<number, string>>({});
   const [folder, setFolder] = useState<string | null>(null);
-  const [opacity, setOpacity] = useState(1);
   const [intervalSeconds, setIntervalSeconds] = useState(5);
   const [randomSlideshow, setRandomSlideshow] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -40,11 +39,9 @@ export function PhotoViewer({ refreshToken, onOpenSettings }: PhotoViewerProps) 
 
     const settings = (await photoService.loadSettingsAsync()) ?? {};
     const savedFolder = settings.folder_path ?? settings.folderPath ?? photoService.loadFolder();
-    const nextOpacity = settings.opacity ?? 1;
     const nextInterval = settings.interval_seconds ?? settings.intervalSeconds ?? 5;
     const nextRandomSlideshow = settings.random_slideshow ?? settings.randomSlideshow ?? false;
 
-    setOpacity(nextOpacity);
     setIntervalSeconds(Math.max(1, Number(nextInterval) || 5));
     setRandomSlideshow(Boolean(nextRandomSlideshow));
 
@@ -132,7 +129,6 @@ export function PhotoViewer({ refreshToken, onOpenSettings }: PhotoViewerProps) 
   return (
     <section
       className="viewer"
-      style={{ opacity }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >

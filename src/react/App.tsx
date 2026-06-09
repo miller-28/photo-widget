@@ -1,17 +1,30 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { PhotoViewer } from "./components/PhotoViewer";
 import { SettingsPanel } from "./components/SettingsPanel";
+import { DEFAULT_SETTINGS } from "./config/default-settings";
 import { settingsService } from "./services/settingsService";
 import "./App.css";
 
 export function App() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [refreshToken, setRefreshToken] = useState(0);
+  const [appOpacity, setAppOpacity] = useState(DEFAULT_SETTINGS.opacity);
   const saveWindowTimer = useRef<number | undefined>(undefined);
+
+  const loadAppAppearance = useCallback(async () => {
+    const settings = await settingsService.getSettings();
+    const opacity = Number(settings?.opacity ?? DEFAULT_SETTINGS.opacity);
+    setAppOpacity(Math.min(1, Math.max(0.2, Number.isFinite(opacity) ? opacity : DEFAULT_SETTINGS.opacity)));
+  }, []);
 
   const handleSaved = useCallback(() => {
     setRefreshToken((value) => value + 1);
-  }, []);
+    void loadAppAppearance();
+  }, [loadAppAppearance]);
+
+  useEffect(() => {
+    void loadAppAppearance();
+  }, [loadAppAppearance]);
 
   useEffect(() => {
     let disposed = false;
@@ -61,7 +74,7 @@ export function App() {
   }, []);
 
   return (
-    <main className="app-shell full-bleed">
+    <main className="app-shell full-bleed" style={{ opacity: appOpacity }}>
       <PhotoViewer
         refreshToken={refreshToken}
         onOpenSettings={() => setSettingsOpen(true)}
