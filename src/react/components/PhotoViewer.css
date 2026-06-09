@@ -39,6 +39,7 @@
   opacity: 0;
   transition: opacity 180ms ease, transform 180ms ease;
   transform: translateY(-4px);
+  cursor: grab;
   -webkit-app-region: drag;
   pointer-events: auto;
   z-index: 60;
@@ -49,11 +50,15 @@
   transform: translateY(0);
 }
 
-.top-stripe:hover {
+.top-stripe:hover,
+.top-stripe .left,
+.top-stripe .title {
   cursor: grab;
 }
 
-.top-stripe:active {
+.top-stripe:active,
+.top-stripe:active .left,
+.top-stripe:active .title {
   cursor: grabbing;
 }
 
