@@ -162,10 +162,7 @@ export function PhotoViewer({ refreshToken, onOpenSettings }: PhotoViewerProps) 
             </button>
           </>
         ) : loading || hasImages ? (
-          <div className="empty loading-empty">
-            <div className="spinner" />
-            <span>Loading images from Pictures...</span>
-          </div>
+          <div className="image-loading-space" aria-hidden="true" />
         ) : (
           <div className="empty">No images found. Set a folder in settings.</div>
         )}
