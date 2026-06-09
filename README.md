@@ -1,6 +1,18 @@
 # LumaFrame
 
-A floating desktop photo frame for local folders.
+LumaFrame is a lightweight floating desktop photo frame for local image folders. It opens as a small frameless window that can stay out of the way while cycling through photos from a selected folder, making it useful for ambient desktop slideshows, reference images, family photos, or a quiet visual companion while working.
+
+The app stores user preferences locally, including the selected folder, slideshow interval, random playback, opacity, always-on-top behavior, and window size. It is designed to work as a native desktop app while keeping the UI simple, fast, and easy to preview during development.
+
+## Tech Stack
+
+- React 19 for the desktop UI
+- TypeScript for typed application code
+- Vite for frontend development and production builds
+- Tauri 2 for the native desktop shell
+- Rust for Tauri commands and native application integration
+- `@tauri-apps/plugin-fs` for local filesystem access
+- `@tauri-apps/plugin-opener` for native open behavior
 
 ## Development
 
